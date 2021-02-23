@@ -1,9 +1,9 @@
 <template>
-<div class="contentWindow">
-    <img class="x_image" src="../assets/images/x_grey.png" @click="deleteNote()">
-    <h2>{{ title }}</h2>
-        <div v-html="textContent">
-        </div>
+    <div class="contentWindow" @mouseover="showControls = true" @mouseleave="showControls = false">
+        <img class="x_image" src="../assets/images/x_grey.png" @click="deleteNote()" v-if="showControls">
+        <h2>{{ title }}</h2>
+        <p v-html="textContent">
+        </p>
     </div>
 </template>
 
@@ -11,9 +11,17 @@
 export default {
     name: 'Note',
     props: ['title', 'textContent'],
+    data() {
+        return {
+            showControls: false
+        }
+    },
     methods: {
         deleteNote() {
             this.$emit('deleteNote');
+        },
+        noteFocused() {
+
         }
     }
     
@@ -22,6 +30,7 @@ export default {
 
 <style>
 .contentWindow {
+    font-family: 'Josefin Sans', sans-serif;
     color: grey;
     padding: 0.5em;
     padding-left: 1em;
@@ -34,6 +43,9 @@ export default {
     height: auto;
     filter: drop-shadow(0 0 10px var(--innerWindow));
     break-inside:avoid;
+    /* width: calc(50% - 3em); */
+    display: inline-block;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 .contentWindow a {
     color: var(--accentColor)
@@ -47,6 +59,7 @@ export default {
     width: 32px;
     position: absolute;
     right: 0.5em;
+    cursor: pointer;
 }
 
 .x_image:hover {

@@ -2,7 +2,6 @@
     <div class="navBox">
         <p class="title">Sheet Notes<a href="/"></a></p>
         <div class="navWindow">
-            <p @click="noteCreation">New Note</p>
             <p><a href="#">Help</a></p>
             <p><a href="#">Other Projects</a></p>
             
@@ -12,12 +11,7 @@
 
 <script>
     export default {
-        name: 'Intro',
-        methods: {
-            noteCreation() {
-                
-            }
-        }
+        name: 'Intro'
     }
     
 </script>
@@ -35,8 +29,7 @@ a {
     grid-column-end: 4;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* border-bottom: 1px solid #DA3B01; */
-    filter: drop-shadow(0 0 10px var(--innerWindow));
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.4);
     background-color: var(--innerWindow);
     font-family: 'Josefin Sans', sans-serif;
 }
